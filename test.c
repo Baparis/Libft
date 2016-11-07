@@ -6,7 +6,7 @@
 /*   By: baparis <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/03 17:21:43 by baparis           #+#    #+#             */
-/*   Updated: 2016/11/07 18:38:25 by baparis          ###   ########.fr       */
+/*   Updated: 2016/11/07 19:19:44 by baparis          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -201,7 +201,21 @@ int	main(int ac, char **argv)
 	printf("%s\n", strstr("Je cherche un c", "er"));
 	printf("Fonction : ");
 	printf("%s\n", ft_strstr("Je cherche un c", "er"));
-
+	printf("-------TEST STRNSTR-------\n");
+	printf("Original : ");
+	printf("%s\n", strnstr("Je cherche un c", "er", 10));
+	printf("Fonction : ");
+	printf("%s\n", ft_strnstr("Je cherche un c", "er", 10));
+	printf("-------TEST STRCMP--------\n");
+	printf("Original : ");
+	printf("%d\n", strcmp("lmd", "lol"));
+	printf("Fonction : ");
+	printf("%d\n", ft_strcmp("lmd", "lol"));
+	printf("-------TEST STRCMP--------\n");
+	printf("Original : ");
+	printf("%d\n", strncmp("lol", "lol", 6));
+	printf("Fonction : ");
+	printf("%d\n", ft_strncmp("lol", "lol", 6));
 	printf("-----------FIN-----------\n");
 	return (0);
 }
