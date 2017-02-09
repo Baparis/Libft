@@ -6,7 +6,7 @@
 /*   By: baparis <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/07 17:01:31 by baparis           #+#    #+#             */
-/*   Updated: 2016/11/14 14:07:48 by baparis          ###   ########.fr       */
+/*   Updated: 2016/11/21 22:49:07 by baparis          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,6 @@ char	*ft_strncat(char *dest, const char *src, size_t n)
 		i++;
 	while (n-- && src[j])
 		dest[i++] = src[j++];
-	if (!n || !src[j])
-		dest[i] = '\0';
+	dest[i] = '\0';
 	return (dest);
 }

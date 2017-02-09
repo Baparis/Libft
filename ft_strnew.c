@@ -6,7 +6,7 @@
 /*   By: baparis <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/09 13:19:42 by baparis           #+#    #+#             */
-/*   Updated: 2016/11/14 15:20:07 by baparis          ###   ########.fr       */
+/*   Updated: 2016/11/23 14:58:31 by baparis          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,5 +25,5 @@ char	*ft_strnew(size_t size)
 		dst[i++] = '\0';
 		return (dst);
 	}
-	return (0);
+	return (NULL);
 }

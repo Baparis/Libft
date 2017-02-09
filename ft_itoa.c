@@ -6,54 +6,35 @@
 /*   By: baparis <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/09 18:45:37 by baparis           #+#    #+#             */
-/*   Updated: 2016/11/14 17:11:24 by baparis          ###   ########.fr       */
+/*   Updated: 2016/11/23 15:18:11 by baparis          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-static int	ft_len(long int n, int *wt)
+char	*ft_itoa(int n)
 {
-	int	len;
+	char	*str;
+	int		size;
 
-	len = 0;
+	size = ft_intlen(n);
+	if (!(str = (char *)malloc(sizeof(*str) * (size + 1))))
+		return (NULL);
 	if (n < 0)
+		*str = '-';
+	if (n == 0)
 	{
-		len = 1;
-		n = -n;
+		*str = '0';
+		return (str);
 	}
-	*wt = 1;
-	while (n / *wt > 9)
+	str[size--] = '\0';
+	while (n != 0)
 	{
-		*wt = *wt * 10;
-		len++;
+		if (n < 0)
+			str[size--] = '0' - n % 10;
+		else
+			str[size--] = '0' + n % 10;
+		n = n / 10;
 	}
-	return (len);
-}
-
-char		*ft_itoa(int n)
-{
-	int			len;
-	int			wt;
-	int			cur;
-	char		*dest;
-	long int	tmp;
-
-	tmp = n;
-	len = ft_len(tmp, &wt);
-	if (!(dest = (char*)malloc(sizeof(char) * len + 2)))
-		return (0);
-	cur = 0;
-	if (tmp < 0)
-	{
-		dest[cur++] = '-';
-		tmp = -tmp;
-	}
-	while (wt >= 1)
-	{
-		dest[cur++] = (tmp / wt % 10) + '0';
-		wt = wt / 10;
-	}
-	dest[cur] = '\0';
-	return (dest);
+	return (str);
 }

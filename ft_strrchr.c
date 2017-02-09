@@ -6,7 +6,7 @@
 /*   By: baparis <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/07 17:56:13 by baparis           #+#    #+#             */
-/*   Updated: 2016/11/12 17:05:26 by baparis          ###   ########.fr       */
+/*   Updated: 2016/11/22 18:50:17 by baparis          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ char	*ft_strrchr(const char *s, int c)
 	tmp = (char*)s;
 	while (tmp[i])
 		i++;
-	while (tmp[i] != c && i >= 0)
+	while (tmp[i] != (char)c && i >= 0)
 		i--;
 	if (i < 0)
 		return (0);

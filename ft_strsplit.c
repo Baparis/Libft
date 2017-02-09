@@ -6,90 +6,43 @@
 /*   By: baparis <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/09 17:36:50 by baparis           #+#    #+#             */
-/*   Updated: 2016/11/16 18:07:52 by baparis          ###   ########.fr       */
+/*   Updated: 2016/11/23 15:15:43 by baparis          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-static int		ft_wordcount(char *s, char c)
+static int	ft_countchars(char const *s, char c)
 {
-	int	count;
-	int i;
+	int	cpt;
 
-	i = 0;
-	count = 0;
-	while (s[i])
-	{
-		if (s[i] == c)
-		{
-			while (s[i] == c && s[i])
-				i++;
-		}
-		else
-		{
-			count++;
-			while (s[i] != c && s[i])
-				i++;
-		}
-	}
-	count++;
-	return (count);
+	cpt = 0;
+	while (s[cpt] && s[cpt] != c)
+		cpt++;
+	return (cpt);
 }
 
-static int		p(char *s, char c)
+char		**ft_strsplit(char const *s, char c)
 {
-	int	i;
-
-	i = 0;
-	while (s[i] != c && s[i])
-		i++;
-	i++;
-	return (i);
-}
-
-static char		*ft_setstr(char *s1, char c)
-{
+	char	**tmp;
 	int		i;
-	char	*tmp;
+	int		nb_words;
 
 	i = 0;
-	if (!(tmp = (char*)malloc(sizeof(char) * p(s1, c))))
-		return (0);
-	while (s1[i] && s1[i] != c)
-	{
-		tmp[i] = s1[i];
-		i++;
-	}
-	tmp[i] = '\0';
-	return (tmp);
-}
-
-char			**ft_strsplit(char const *s, char c)
-{
-	int		i;
-	char	**dest;
-	int		j;
-
-	if (s == NULL)
+	if (!s)
 		return (NULL);
-	i = 0;
-	j = 0;
-	if (!(dest = (char**)malloc(sizeof(char*) * ft_wordcount((char*)s, c))))
-		return (0);
-	while (s[i])
+	nb_words = ft_countwords(s, c);
+	if (!(tmp = (char **)malloc(sizeof(*tmp) * (nb_words + 1))))
+		return (NULL);
+	tmp[nb_words] = 0;
+	while (i < nb_words)
 	{
-		if (s[i] != c)
-		{
-			if (!(dest[j] = (char*)malloc(sizeof(char) * p((char*)s + i, c))))
-				return (0);
-			dest[j++] = ft_setstr((char*)s + i, c);
-			while (s[i] != c && s[i])
-				i++;
-		}
-		else
-			i++;
+		while (*s && *s == c)
+			s++;
+		tmp[i] = ft_strsub(s, 0, ft_countchars(s, c));
+		while (*s && *s != c)
+			s++;
+		i++;
 	}
-	dest[j] = 0;
-	return (dest);
+	return (tmp);
 }
